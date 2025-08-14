@@ -1,4 +1,4 @@
-const ALLOWED_ORIGIN = "https://f2199665.fronted-eqb.pages.dev";
+const ALLOWED_ORIGIN = "https://db79d0b3.fronted-eqb.pages.dev";
 
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
