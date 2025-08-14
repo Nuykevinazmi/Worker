@@ -1,3 +1,5 @@
+const ALLOWED_ORIGIN = "https://f010a299.fronted-eqb.pages.dev";
+
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
@@ -15,6 +17,12 @@ function md5(str) {
 }
 
 async function handleRequest(request) {
+  // Cek origin
+  const origin = request.headers.get("Origin");
+  if (origin && origin !== ALLOWED_ORIGIN) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
   const url = new URL(request.url);
 
   if (url.pathname === "/check" && request.method === "POST") {
